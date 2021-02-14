@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+  if (sessionStorage.length != 0) {
+                location.replace("index.html");
+          }
+
+</script>
+
+	<style>
+		body{
+			background: #f0f4f7;
+		}
+
+    footer {
+        position: relative;
+        height: 100px;
+        width: 100%;
+        
+    }
+
+    p.copyright {
+        position: absolute;
+        width: 100%;
+        color: gray;
+        line-height: 40px;
+        font-size: 0.7em;
+        text-align: center;
+        bottom:0;
+    }
+    #basic-text1{
+    	background: black;
+    	color:#f0f4f7;
+    	cursor: pointer;
+    	border: none;
+    }
+    #navDark{
+    	background: black;
+    	margin-bottom: 60px;
+     	
+    }
+    #navDark a{
+    	color:white;
+    	margin-left: 40px;
+    }
+.login-form {
+    width: 340px;
+    margin: 50px auto;
+  	font-size: 15px;
+}
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+.login-form h2 {
+    margin: 0 0 15px;
+}
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
+a{
+	color: black;
+	text-decoration: underline;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="supreme-container">
+	<nav class="navbar" id="navDark">
+  <a class="navbar-brand" href="#" style="text-decoration:none" >
+    GitHub .
+  </a>
+</nav>
+<div class="login-form">
+    <form >
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" id="email" placeholder="Email" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="connecter()" class="btn btn-block" style="background: black;color:white;">Log in</button>
+        </div>
+        <div class="clearfix">
+            <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
+            <a href="#" class="float-right">Forgot Password?</a>
+        </div>        
+    </form>
+    <p class="text-center"><a href="inscription.html">Create an Account</a></p>
+</div>
+
+
+
+<footer>
+    <p class="copyright">copyright 2020/2021</p>
+</footer>
+
+</div>
+
+
+
+ <script>
+        function connecter() {
+    var email = document.getElementById('email').value;
+    var pass = document.getElementById('password').value;
+
+    var users = JSON.parse(localStorage.getItem('users'))
+    if(users) {
+        for (var i = 0; i< users.length; i++){
+            if (email == users[i].Email && pass == users[i].Password) {
+               	sessionStorage.setItem("prenom",users[i].Fname);
+               	sessionStorage.setItem("nom",users[i].Lname);
+                return location.replace("index.html");
+
+             }
+        }
+    } else {
+        localStorage.setItem('users', '[]');
+    }
+
+    return alert('Access denied. Valid username and password is required.');
+}
+     	
+    </script>
+   
+</body>
+</html>
